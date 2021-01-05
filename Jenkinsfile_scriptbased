@@ -60,4 +60,9 @@ node {
                     }
                 }
             }
+        
+        stage("speak") {
+            slackSend color: '#BADA55', message: "Jenkins Job `${env.JOB_NAME}` #${env.BUILD_NUMBER} run", channel: 'jenkins0101-alerts'
         }
+
+    }
