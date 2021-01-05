@@ -3,7 +3,7 @@ node {
     def mvnHome
     stage('Preparation') { // for display purposes
         // Get some code from a GitHub repository
-        git 'https://github.com/betawins/spring3-mvc-maven-xml-hello-world-1.git'
+        git 'https://github.com/ncodeit-io/p01-cicd-apps.git'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
@@ -37,11 +37,11 @@ node {
                         nexusArtifactUploader(
                             nexusVersion: "nexus3",
                             protocol: "http",
-                            nexusUrl: "13.233.104.193:8081/",
+                            nexusUrl: "nexus0101.ncodeit.com",
                             groupId: pom.groupId,
                             version: '${BUILD_NUMBER}',
-                            repository: "ncodeit-scripted",
-                            credentialsId: "nexus_credentials",
+                            repository: "ncodeit-maven-repo",
+                            credentialsId: "ncodeit-user-on-nexus",
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
                                 [artifactId: pom.artifactId,
